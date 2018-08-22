@@ -1364,7 +1364,9 @@ static int php_uv_do_callback3(zval *retval_ptr, php_uv_t *uv, zval *params, int
 		uv->callback[type]->fci.param_count   = param_count;
 		uv->callback[type]->fci.no_separation = 1;
 		uv->callback[type]->fci.object = NULL;
+#if PHP_VERSION_ID < 70300
 		uv->callback[type]->fcc.initialized = 1;
+#endif
 
 		uv->callback[type]->fcc.calling_scope = NULL;
 		uv->callback[type]->fcc.called_scope = NULL;
